@@ -6,13 +6,13 @@ const { Category, Product } = require('../../models');
 router.get('/', async (req, res) => {
   // find all categories
   // be sure to include its associated Products
-    // be sure to include its associated Category and Tag data
-    try {
-      const categoryData = await Category.findAll();
-      res.status(200).json(categoryData);
-    } catch (err) {
-      res.status(500).json(err);
-    }
+  // be sure to include its associated Category and Tag data
+  try {
+    const categoryData = await Category.findAll();
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get('/:id', (req, res) => {
@@ -29,11 +29,11 @@ router.get('/:id', (req, res) => {
       }
     }
   )
-  .then(categoryData => res.json(categoryData))
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
+    .then(categoryData => res.json(categoryData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
 });
 
 router.post('/', async (req, res) => {
@@ -59,15 +59,15 @@ router.put('/:id', (req, res) => {
     }
   ).then(categoryData => {
     if (!categoryData) {
-      res.status(404).json({ message: 'No catagories by that id'});
+      res.status(404).json({ message: 'No catagories by that id' });
       return;
     }
     res.json(categoryData);
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
 });
 
 router.delete('/:id', async (req, res) => {

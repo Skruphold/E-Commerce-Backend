@@ -28,18 +28,18 @@ router.get('/:id', async (req, res) => {
         model: Category,
         attributes: ['category_name']
       },
-    {
-      model: Tag,
-      attributes: ['tag_name'],
-      as: 'product_id'
-    }]
+      {
+        model: Tag,
+        attributes: ['tag_name'],
+        as: 'product_id'
+      }]
     }
   )
-  .then(productData => res.json(productData))
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
+    .then(productData => res.json(productData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
 });
 
 // create new product

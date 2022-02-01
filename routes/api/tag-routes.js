@@ -6,13 +6,13 @@ const { Tag, Product, ProductTag } = require('../../models');
 router.get('/', async (req, res) => {
   // find all tags
   // be sure to include its associated Product data
-    // be sure to include its associated Category and Tag data
-    try {
-      const tagData = await Tag.findAll();
-      res.status(200).json(tagData);
-    } catch (err) {
-      res.status(500).json(err);
-    }
+  // be sure to include its associated Category and Tag data
+  try {
+    const tagData = await Tag.findAll();
+    res.status(200).json(tagData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get('/:id', (req, res) => {
@@ -29,11 +29,11 @@ router.get('/:id', (req, res) => {
       }
     }
   )
-  .then(tagData => res.json(tagData))
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
+    .then(tagData => res.json(tagData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
 });
 
 router.post('/', async (req, res) => {
@@ -59,15 +59,15 @@ router.put('/:id', (req, res) => {
     }
   ).then(tagData => {
     if (!tagData) {
-      res.status(404).json({ message: 'No tags by that id'});
+      res.status(404).json({ message: 'No tags by that id' });
       return;
     }
     res.json(tagData);
   })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    })
 });
 
 router.delete('/:id', async (req, res) => {
